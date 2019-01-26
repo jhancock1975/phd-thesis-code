@@ -15,7 +15,9 @@ public:
   }
 
   void setData(int node_val){
-    node_val = node_val;
+    this->node_val = node_val;
+    printf("node_val=%d\n", this->node_val);
+
   }
   
     
@@ -32,7 +34,7 @@ public:
   }
   
   void add(int node_val){
-    Node cur = head;
+    Node* cur = head;
     while(cur->getNext() != NULL){
       cur = cur->getNext();
     }
@@ -42,6 +44,15 @@ public:
     cur->setNext(new_node);
   }
 
+  void printList(){
+    Node* cur = head;
+    while(cur->getNext() != NULL){
+      printf("%d, ", cur->getData());
+      cur = cur->getNext();
+    }
+    printf("\n");
+  }
+
 private:
   Node *head;
 };
@@ -49,5 +60,8 @@ private:
 
 int main(int argc, char** argv){
   LinkedList linkedList;
+  linkedList.add(1);
+  linkedList.add(2);
+  linkedList.printList();
   return(0);
 }
